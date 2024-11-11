@@ -16,7 +16,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n      \"password\":\"qwerty\",\n    \"email\":\"bbbh\"\n}",
+              "raw": "{\n    \"password\":\"qwerty\",\n    \"email\":\"bbbh\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
