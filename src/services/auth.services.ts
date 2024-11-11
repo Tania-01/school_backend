@@ -1,5 +1,6 @@
 import { Types } from "mongoose";
 
+import { adminConfig } from "../config/admin.config";
 import { ERole } from "../enum/role.enums";
 import { ApiError } from "../errors/api.error";
 import { tokenRepository } from "../repositories/tokken.repository";
@@ -12,16 +13,16 @@ import { ITokenPayload, ITokensPair, tokenService } from "./tokken.service";
 class AuthServices {
   public async signUpAdmin(): Promise<IUser> {
     const adminUser = await userRepository.getOneByParams({
-      role: ERole.ADMIN,
+      role: adminConfig.ADMIN_ROLE,
     });
 
     if (adminUser) {
       return adminUser;
     }
     const dto = {
-      name: "alex",
-      email: "admin@gmail.com",
-      password: "admin",
+      name: adminConfig.ADMIN_NAME,
+      email: adminConfig.ADMIN_EMAIL,
+      password: adminConfig.ADMIN_PASSWORD,
     };
 
     const userFromDb = await userRepository.getOneByParams({
@@ -93,4 +94,5 @@ class AuthServices {
     return jwtTokens;
   }
 }
+
 export const authservice = new AuthServices();
